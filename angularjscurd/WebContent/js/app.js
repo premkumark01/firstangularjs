@@ -1,5 +1,56 @@
-var myApp=angular.module("myApp",[]);
+var myApp=angular.module("myApp",['ngRoute']);
 
+
+myApp.controller("productController", function($scope) {
+
+
+
+});
+
+
+
+
+
+myApp.config(function($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl : 'aboutus.jsp',
+		controller : 'aboutusController'
+	}).when('/aboutus', {
+		templateUrl : 'aboutus.jsp',
+		controller : 'aboutusController'
+	}).when('/news', {
+		templateUrl : 'blog.jsp',
+		controller : 'blogController'
+	});
+});
+
+
+
+/*
+
+
+myApp.config(function($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl : 'home.jsp',
+		controller : 'myC'
+	}).when('/aboutus', {
+		templateUrl : 'aboutus.jsp',
+		controller : 'aboutusController'
+	}).when('/register', {
+		templateUrl : 'register.jsp',
+		controller : 'registerController'
+	}).when('/product', {
+		templateUrl : 'product.jsp',
+		controller : 'myCtrl'
+	}).when('/blog', {
+		templateUrl : 'blog.jsp',
+		controller : 'blogController'
+	});
+});
+*/
+myApp.controller('registerController',function($scope,$http){
+	$scope.message="";
+});
 myApp.controller('myCtrl',function($scope,$http){
 	$scope.message="";
 	$scope.error_message="";

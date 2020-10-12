@@ -1,12 +1,11 @@
-		
-					<div class="content col-md-9" ng-controller="myCtrl">
+
 						<button data-toggle="modal" data-target="#myModalSave"
 							type="button" class="btn btn-success">Add New Product</button>
 						<br> <br>
 
 						<div class="alert alert-success alert-dismissible"
 							ng-show="message">
-							<a href="#!/product" class="close" ng-click="messageClose()">&times;</a> <strong>Success!</strong>
+							<a href="#" class="close" ng-click="messageClose()">&times;</a> <strong>Success!</strong>
 							{{message}} action.
 						</div>
 
@@ -37,11 +36,11 @@
 							</tbody>
 						</table>
 
-						<!-- Modal -->
+						Modal
 						<div id="myModalSave" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 
-								<!-- Modal content-->
+								Modal content
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -87,11 +86,11 @@
 
 
 
-						<!-- Edit Modal -->
+						Edit Modal
 						<div id="myModalEdit" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 
-								<!-- Modal content-->
+								Modal content
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -136,11 +135,11 @@
 
 
 
-						<!-- Delete Modal -->
+						Delete Modal
 						<div id="myModalDelete" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 
-								<!-- Modal content-->
+								Modal content
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -158,11 +157,3 @@
 
 							</div>
 						</div>
-
-
-
-
-
-
-					</div>
-			
