@@ -1,5 +1,5 @@
 		
-					<div class="content col-md-9" ng-controller="myCtrl">
+					<div class="content col-md-9" ng-controller="productController">
 						<button data-toggle="modal" data-target="#myModalSave"
 							type="button" class="btn btn-success">Add New Product</button>
 						<br> <br>

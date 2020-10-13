@@ -1,57 +1,29 @@
-var myApp=angular.module("myApp",['ngRoute']);
+var app=angular.module("app",['ngRoute']);
 
-
-myApp.controller("productController", function($scope) {
-
-
+app.config(function($routeProvider){
+    $routeProvider.when('/',{
+        templateUrl:'home.jsp',
+        controller:'myC'
+    }).when('/product',{
+        templateUrl:'product.jsp',
+        controller:'productController'
+    }).when('/aboutus',{
+        templateUrl:'aboutus.jsp',
+        controller:'aboutController'
+    }).when('/blog',{
+        templateUrl:'blog.jsp',
+        controller:'blogController'
+    }).when('/register',{
+        templateUrl:'register.jsp',
+        controller:'regiController'
+    }).when('/login',{
+        templateUrl:'login.jsp',
+        controller:'loginController'
+    })
 
 });
 
-
-
-
-
-myApp.config(function($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'aboutus.jsp',
-		controller : 'aboutusController'
-	}).when('/aboutus', {
-		templateUrl : 'aboutus.jsp',
-		controller : 'aboutusController'
-	}).when('/news', {
-		templateUrl : 'blog.jsp',
-		controller : 'blogController'
-	});
-});
-
-
-
-/*
-
-
-myApp.config(function($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'home.jsp',
-		controller : 'myC'
-	}).when('/aboutus', {
-		templateUrl : 'aboutus.jsp',
-		controller : 'aboutusController'
-	}).when('/register', {
-		templateUrl : 'register.jsp',
-		controller : 'registerController'
-	}).when('/product', {
-		templateUrl : 'product.jsp',
-		controller : 'myCtrl'
-	}).when('/blog', {
-		templateUrl : 'blog.jsp',
-		controller : 'blogController'
-	});
-});
-*/
-myApp.controller('registerController',function($scope,$http){
-	$scope.message="";
-});
-myApp.controller('myCtrl',function($scope,$http){
+app.controller('productController',function($scope,$http){
 	$scope.message="";
 	$scope.error_message="";
 	

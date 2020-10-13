@@ -64,7 +64,7 @@
 
 
 
-<div class="registerController">
+<div class="regiController">
 <form class="content col-md-9" name="formRegister">
 <h1>Register User</h1>
 	<div class="form-group">
