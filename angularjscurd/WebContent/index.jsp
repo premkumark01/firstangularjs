@@ -14,13 +14,13 @@
 
 
 <link rel='stylesheet' type='text/css' media='screen'href='css/bootstrap.min.css'>
-
-<script src='js/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js'></script>
+<!-- <script src='js/angular.js'></script> -->
 <script src='js/angular-route.min.js'></script>
 <script src='js/bootstrap.min.js'></script>
 <script src='js/jquery.min.js'></script>
 <script src='js/app.js'></script>
->
+
 <style type="text/css">
 .header, .footer-area {
 	border: 1px solid #DDD;
@@ -45,6 +45,13 @@
 	border: 1px solid #DDD;
 	padding: 20px;
 	box-shadow: 0px 0px 10px #DDD;
+}
+input.ng-invalid.ng-touched{
+border:2px solid red;
+}
+input[disabled="disabled"]{
+opacity:0.4;
+cursor: not-allowed !important;
 }
 </style>
 </head>

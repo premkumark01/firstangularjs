@@ -3,7 +3,7 @@ var app=angular.module("app",['ngRoute']);
 app.config(function($routeProvider){
     $routeProvider.when('/',{
         templateUrl:'home.jsp',
-        controller:'myC'
+        controller:'myCC'
     }).when('/product',{
         templateUrl:'product.jsp',
         controller:'productController'
@@ -20,6 +20,93 @@ app.config(function($routeProvider){
         templateUrl:'login.jsp',
         controller:'loginController'
     })
+
+});
+
+app.controller('myCC',function($scope,$location,$http,userService){
+	$scope.UserDet;
+	$scope.UserDet = userService.getUser();
+});
+
+app.controller('regiController',function($scope,$location,$http,userService){
+	$scope.message="";
+	$scope.error_message="";
+	$scope.addingUser = function(user) {
+		
+		$location.path('/');
+	   };  
+	//save user
+	$scope.user={};
+	$scope.sendMessage=function(){
+		$http({
+			method:'POST',
+			url:'http://localhost:8080/angularjscurd/webresources/users/',
+			data:angular.toJson($scope.user),
+			header : {
+				'Content-Type' : 'application/json'
+			}
+		}).then(
+				function(response){
+					userService.addUser($scope.user);
+					$scope.message="User Registered Successfully";
+					$location.path('/');
+					
+				},
+				function(reason){
+					$scope.error_message=reason.data;
+				}
+		);
+		
+	};
+	
+	
+	
+	/*$scope.sendMessage = function(){
+		$location.path('/');
+	};*/
+
+});
+
+app.controller('loginController',function($scope,$http){
+	$scope.message="";
+	$scope.error_message="";
+	
+	
+	
+	//select user
+	$scope.user1={};
+	$scope.sendLogin=function(){
+		$http({
+			method:"GET",
+			url:'http://localhost:8080/angularjscurd/webresources/users/'+$scope.user1.email,
+		}).then(
+				function(response){
+					
+					$scope.use=response.data;
+					var demo=JSON.stringify($scope.use,null,"    "); 
+					var pass=demo.password;
+					alert(pass);
+					if($scope.pass == $scope.user1.password)
+						{
+						$scope.message="Login Successfull";
+						}
+					else{
+						$scope.error_message="Please enter a Valid Value";
+					}
+					
+				},
+				function(reason){
+					alert("Resource not found");
+					$scope.error_message=reason.data;
+				}
+		)
+	};
+	
+	//clear message
+	$scope.messageClose = function(){
+		$scope.message="";
+		$scope.error_message="";
+	};
 
 });
 
@@ -142,3 +229,24 @@ app.controller('productController',function($scope,$http){
 	
 		
 });
+
+
+
+
+app.service('userService', function() {
+	 var Userss = [], addUser, getUser, removeUser;
+	     addUser = function(obj) {
+	        Userss.push(obj);
+	     };
+	     getUser = function(){
+	        return Userss;
+	     };
+	     removeUser = function(id) {
+	        Userss.splice(id, 1);
+	     };
+	     return {
+	        addUser: addUser,
+	        removeUser: removeUser,
+	        getUser: getUser
+	     };
+	});

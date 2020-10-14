@@ -64,27 +64,62 @@
 
 
 
-<div class="regiController">
-<form class="content col-md-9" name="formRegister">
+<div ng-controller="regiController" class="content col-md-9">
+<form  name="formRegister" ng-submit="sendMessage()" novalidate>
 <h1>Register User</h1>
+
 	<div class="form-group">
 		<label for="name">Name:</label> <input type="text"
-			class="form-control" id="name" ng-model="name"
-					ng-required="true" ng-minlength="3" ng-maxlength="10">
+			class="form-control" id="name" ng-model="user.name"
+				name="name"	ng-required="true" ng-minlength="3" ng-maxlength="10">
+		<div ng-show="formRegister.name.$touched && formRegister.name.$error.required">
+		<small style="color: red; display:black; text-align:center;">This field is required.</small>
+		</div>
+		<div ng-show="formRegister.name.$touched && formRegister.name.$error.minlength">
+		<small style="color: red; display:black; text-align:center;">Please enter at least 3 characters.</small>
+		</div>
+		<div ng-show="formRegister.name.$touched && formRegister.name.$error.maxlength">
+		<small style="color: red; display:black; text-align:center;">Please enter no more than 10 characters.</small>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="email">Email address:</label> <input type="email"
-			class="form-control" id="email" ng-model="email"
+			class="form-control" name="email" id="email" ng-model="user.email"
 					ng-required="true">
+					<div ng-show="formRegister.email.$touched && formRegister.email.$invalid">
+		<small style="color: red; display:black; text-align:center;">Enter a valid Email</small>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="age">Age:</label> <input type="number"
-			class="form-control" id="age" ng-model="age"
+			class="form-control" id="age" name="age" ng-model="user.age"
 					ng-required="true" min="18" max="50">
+					<div ng-show="formRegister.age.$touched && formRegister.age.$error.required">
+		<small style="color: red; display:black; text-align:center;">This field is required.</small>
+		</div>
+		<div ng-show="formRegister.age.$touched && formRegister.age.$error.min">
+		<small style="color: red; display:black; text-align:center;">Please
+						enter a value greater than or equal to 18.</small>
+		</div>
+		
+		<div ng-show="formRegister.age.$touched && formRegister.age.$error.max">
+		<small style="color: red; display:black; text-align:center;">Please
+						enter a value less than or equal to 50.</small>
+		</div>
+		
 	</div>
 	<div class="form-group">
-		<label for="pwd">Password:</label> <input type="password"
-			class="form-control" id="pwd">
+		<label for="pwd">Password:</label> <input type="password" name="password" ng-model="user.password"
+			class="form-control" id="pwd" ng-minlength="3" ng-maxlength="10" ng-required="true">
+			<div ng-show="formRegister.password.$touched && formRegister.password.$error.required">
+		<small style="color: red; display:black; text-align:center;">This field is required.</small>
+		</div>
+		<div ng-show="formRegister.password.$touched && formRegister.password.$error.minlength">
+		<small style="color: red; display:black; text-align:center;">Please enter at least 3 characters.</small>
+		</div>
+		<div ng-show="formRegister.password.$touched && formRegister.password.$error.maxlength">
+		<small style="color: red; display:black; text-align:center;">Please enter no more than 10 characters.</small>
+		</div>
 	</div>
 
 	<button type="submit" class="btn btn-default" ng-disabled="formRegister.$invalid">Submit</button>
